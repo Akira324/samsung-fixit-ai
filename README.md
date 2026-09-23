@@ -45,16 +45,13 @@ cp .env.example .env # then add your LLM key
 
 ## 3. Environment variables
 
-| Variable       | Required | Purpose                                                |
-| -------------- | -------- | ------------------------------------------------------ |
-| `LLM_API_KEY`  | no\*     | Your LLM provider key. Server-side only.                |
-| `LLM_BASE_URL` | no       | OpenAI-compatible base URL (default `https://api.openai.com/v1`). |
-| `LLM_MODEL`    | no       | Model id (default `gpt-4o-mini`).                       |
+| Variable | Required | Purpose |
+|---|---|---|
+| `LLM_API_KEY` | no* | Your LLM provider API key. Server-side only. |
+| `LLM_BASE_URL` | no | OpenAI-compatible LLM base URL. This prototype uses OpenRouter. |
+| `LLM_MODEL` | no | Free LLM model identifier. Current prototype uses `google/gemma-4-26b-a4b-it:free`. |
 
-\* Without a key the pipeline still runs fully on the knowledge base + cache;
-the LLM enrichment/reasoning stages are skipped. `.env` is gitignored; only
-`.env.example` is committed. The key is read inside the request handler and is
-never sent to the browser.
+*Without a key, the pipeline still runs fully on the knowledge base + cache; the LLM enrichment/reasoning stages are skipped. The `.env` file is gitignored and must never be committed.
 
 ## 4. Run the backend
 
