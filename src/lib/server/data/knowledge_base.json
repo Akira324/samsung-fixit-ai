@@ -1,0 +1,449 @@
+{
+  "version": 2,
+  "categories": [
+    {
+      "category": "Network Connectivity",
+      "flows": [
+        {
+          "id": "wifi_disconnects",
+          "problem": "Wi-Fi repeatedly disconnects",
+          "severity": "High",
+          "keywords": ["wifi", "wi-fi", "wireless", "internet", "disconnect", "dropping", "drops", "keeps disconnecting", "unstable network"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open Wi-Fi settings and confirm you are connected to the correct network", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Turn Wi-Fi off and back on to force a fresh connection", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Forget the network, then reconnect and re-enter the password", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Turn off Airplane mode if it is enabled", "deeplink": "android.settings.AIRPLANE_MODE_SETTINGS" },
+            { "instruction": "Disable adaptive/smart network switching so the phone stops hopping to mobile data", "deeplink": "android.settings.WIRELESS_SETTINGS" },
+            { "instruction": "If the problem continues, reset network settings", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "wifi_no_internet",
+          "problem": "Connected to Wi-Fi but no internet access",
+          "severity": "Medium",
+          "keywords": ["wifi no internet", "connected but no internet", "no internet access", "wifi not working", "websites not loading"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open Wi-Fi settings and reconnect to the network", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Toggle Airplane mode on and off to reset the radios", "deeplink": "android.settings.AIRPLANE_MODE_SETTINGS" },
+            { "instruction": "Restart your router and wait 30 seconds", "deeplink": "unresolved" },
+            { "instruction": "Check that no VPN or private DNS is blocking traffic", "deeplink": "android.settings.VPN_SETTINGS" }
+          ]
+        },
+        {
+          "id": "mobile_data_not_working",
+          "problem": "Mobile data is not working",
+          "severity": "High",
+          "keywords": ["mobile data", "cellular", "4g", "5g", "lte", "no data", "data not working", "sim internet"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open data usage settings and confirm mobile data is switched on", "deeplink": "android.settings.DATA_USAGE_SETTINGS" },
+            { "instruction": "Make sure Airplane mode is turned off", "deeplink": "android.settings.AIRPLANE_MODE_SETTINGS" },
+            { "instruction": "Check the preferred network mode and select automatic", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Check whether Data Saver is restricting background data", "deeplink": "android.settings.DATA_USAGE_SETTINGS" },
+            { "instruction": "Reseat the SIM card and restart the device", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "network_5g_4g_switching",
+          "problem": "Mobile network intermittently switches between 5G and 4G without user action",
+          "severity": "Medium",
+          "keywords": ["5g", "4g", "lte", "network switching", "5g drops to 4g", "5g unstable", "network mode", "intermittent", "random switching", "signal drop", "preferred network"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open mobile network settings and check the preferred network type", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Set the preferred network mode to 5G only or LTE/4G only to stop automatic switching", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Toggle Airplane mode on for 10 seconds then off to re-register on the network", "deeplink": "android.settings.AIRPLANE_MODE_SETTINGS" },
+            { "instruction": "Reseat the SIM card and restart the device", "deeplink": "unresolved" },
+            { "instruction": "Check with your carrier whether 5G coverage in your area is stable", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "hotspot_not_working",
+          "problem": "Mobile hotspot will not turn on or other devices cannot connect",
+          "severity": "Medium",
+          "keywords": ["hotspot", "tethering", "tether", "share internet", "portable hotspot", "hotspot not working"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Confirm mobile data is enabled — hotspot cannot share Wi-Fi by default", "deeplink": "android.settings.DATA_USAGE_SETTINGS" },
+            { "instruction": "Open tethering settings and turn Mobile Hotspot on", "deeplink": "android.settings.TETHER_SETTINGS" },
+            { "instruction": "Change the hotspot band to 2.4 GHz so older devices can see it", "deeplink": "android.settings.TETHER_SETTINGS" },
+            { "instruction": "Reset the hotspot name and password, then reconnect the other device", "deeplink": "android.settings.TETHER_SETTINGS" },
+            { "instruction": "Turn off Data Saver, which can block tethering", "deeplink": "android.settings.DATA_USAGE_SETTINGS" }
+          ]
+        },
+        {
+          "id": "volte_not_working",
+          "problem": "VoLTE calls fail or the device falls back to 3G for voice calls",
+          "severity": "High",
+          "keywords": ["volte", "voice over lte", "hd voice", "hd calling", "call drops to 3g", "call quality", "lte calling", "voice call", "volte not working"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open mobile network settings and ensure VoLTE or HD Calling is enabled", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Check that the preferred network mode includes LTE or 5G", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Toggle Airplane mode on and off to re-register on the network", "deeplink": "android.settings.AIRPLANE_MODE_SETTINGS" },
+            { "instruction": "Reseat the SIM card and restart the device", "deeplink": "unresolved" },
+            { "instruction": "Contact your carrier to confirm VoLTE is provisioned on your account", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "vpn_not_connecting",
+          "problem": "VPN will not connect or keeps disconnecting",
+          "severity": "Medium",
+          "keywords": ["vpn", "vpn not connecting", "vpn disconnect", "vpn failed", "vpn drops", "virtual private network"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open VPN settings and verify the VPN configuration is correct", "deeplink": "android.settings.VPN_SETTINGS" },
+            { "instruction": "Disconnect and reconnect to the VPN", "deeplink": "android.settings.VPN_SETTINGS" },
+            { "instruction": "Switch between Wi-Fi and mobile data to rule out a network issue", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Turn off battery optimization for the VPN app", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Check that the date and time are set correctly — incorrect time breaks VPN certificates", "deeplink": "android.settings.DATE_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Bluetooth",
+      "flows": [
+        {
+          "id": "bluetooth_wont_pair",
+          "problem": "Bluetooth earbuds or accessory will not connect",
+          "severity": "Medium",
+          "keywords": ["bluetooth", "earbuds", "buds", "headphones", "pair", "pairing", "wireless earphones", "speaker won't connect", "car bluetooth"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open Bluetooth settings and make sure Bluetooth is on", "deeplink": "android.settings.BLUETOOTH_SETTINGS" },
+            { "instruction": "Put the earbuds in pairing mode and keep them within one metre", "deeplink": "unresolved" },
+            { "instruction": "Unpair (forget) the device, then pair it again from scratch", "deeplink": "android.settings.BLUETOOTH_SETTINGS" },
+            { "instruction": "Allow the Nearby devices permission if the companion app asks for it", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Turn Location on — scanning for nearby devices can require it", "deeplink": "android.settings.LOCATION_SOURCE_SETTINGS" }
+          ]
+        },
+        {
+          "id": "bluetooth_audio_cutting",
+          "problem": "Bluetooth audio stutters or cuts out",
+          "severity": "Low",
+          "keywords": ["bluetooth audio", "stutter", "cutting out", "choppy sound", "audio lag", "skipping"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Move the phone closer to the accessory and remove obstacles", "deeplink": "unresolved" },
+            { "instruction": "Disconnect other paired Bluetooth devices", "deeplink": "android.settings.BLUETOOTH_SETTINGS" },
+            { "instruction": "Turn Wi-Fi off briefly to check for 2.4 GHz interference", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Clear the Bluetooth app cache in app settings", "deeplink": "android.settings.APPLICATION_SETTINGS" }
+          ]
+        },
+        {
+          "id": "bluetooth_auto_disconnect",
+          "problem": "Bluetooth device connects but disconnects after a few seconds",
+          "severity": "Medium",
+          "keywords": ["bluetooth disconnect", "bluetooth drops", "bluetooth keeps disconnecting", "auto disconnect", "bluetooth unstable", "connected then disconnects"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Unpair the Bluetooth device and pair it again", "deeplink": "android.settings.BLUETOOTH_SETTINGS" },
+            { "instruction": "Turn off battery optimization for the Bluetooth-related app", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Check that the Bluetooth device firmware is up to date", "deeplink": "unresolved" },
+            { "instruction": "Disconnect all other paired devices to avoid connection conflicts", "deeplink": "android.settings.BLUETOOTH_SETTINGS" },
+            { "instruction": "Restart both the phone and the Bluetooth device", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "SIM and eSIM",
+      "flows": [
+        {
+          "id": "sim_not_detected",
+          "problem": "SIM card is not detected by the device",
+          "severity": "High",
+          "keywords": ["sim", "sim card", "no sim", "sim not detected", "sim not recognized", "insert sim", "sim error", "sim missing"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Remove the SIM card, clean the contacts gently, and reinsert it", "deeplink": "unresolved" },
+            { "instruction": "Restart the device after reinserting the SIM", "deeplink": "unresolved" },
+            { "instruction": "Open mobile network settings and check whether the SIM is recognized", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Toggle Airplane mode on and off", "deeplink": "android.settings.AIRPLANE_MODE_SETTINGS" },
+            { "instruction": "Try the SIM card in another device to rule out a damaged SIM", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "esim_activation_failed",
+          "problem": "eSIM activation or setup fails",
+          "severity": "High",
+          "keywords": ["esim", "e-sim", "esim activation", "esim setup", "esim failed", "esim not working", "digital sim", "embedded sim", "qr code sim"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Ensure the device is connected to Wi-Fi before scanning the eSIM QR code", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Open mobile network settings and select Add eSIM or Add mobile plan", "deeplink": "android.settings.NETWORK_OPERATOR_SETTINGS" },
+            { "instruction": "Verify the QR code or activation details with your carrier", "deeplink": "unresolved" },
+            { "instruction": "Check that the date and time are set automatically — incorrect time can block activation", "deeplink": "android.settings.DATE_SETTINGS" },
+            { "instruction": "Restart the device and try the activation again", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "NFC",
+      "flows": [
+        {
+          "id": "nfc_not_working",
+          "problem": "NFC or contactless payments are not detected",
+          "severity": "Medium",
+          "keywords": ["nfc", "contactless", "tap to pay", "samsung pay", "google pay", "nfc not working", "nfc tag", "tap and pay", "mobile payment"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open NFC settings and make sure NFC is turned on", "deeplink": "android.settings.NFC_SETTINGS" },
+            { "instruction": "Remove the phone case — thick cases can block the NFC antenna", "deeplink": "unresolved" },
+            { "instruction": "Make sure the screen is unlocked when tapping — most payment apps require it", "deeplink": "unresolved" },
+            { "instruction": "Set the correct default payment app in the Tap and pay settings", "deeplink": "android.settings.NFC_SETTINGS" },
+            { "instruction": "Restart the device and try again", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Battery and Charging",
+      "flows": [
+        {
+          "id": "battery_drains_fast",
+          "problem": "Battery drains much faster than expected",
+          "severity": "Medium",
+          "keywords": ["battery", "drain", "draining", "dies fast", "battery life", "power", "discharges quickly"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open battery settings and review which apps used the most power", "deeplink": "android.settings.BATTERY_SAVER_SETTINGS" },
+            { "instruction": "Enable Power saving mode", "deeplink": "android.settings.BATTERY_SAVER_SETTINGS" },
+            { "instruction": "Restrict background activity for the heaviest apps", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Lower screen brightness and shorten the screen timeout", "deeplink": "android.settings.DISPLAY_SETTINGS" },
+            { "instruction": "Turn off Location for apps that do not need it", "deeplink": "android.settings.LOCATION_SOURCE_SETTINGS" },
+            { "instruction": "Turn off Wi-Fi and Bluetooth scanning when not in use", "deeplink": "android.settings.WIRELESS_SETTINGS" }
+          ]
+        },
+        {
+          "id": "charging_slow",
+          "problem": "Phone charges slowly or not at all",
+          "severity": "High",
+          "keywords": ["charging", "charge", "slow charging", "not charging", "cable", "charger", "battery not filling"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Inspect the charging port for lint and use the original cable and adapter", "deeplink": "unresolved" },
+            { "instruction": "Check battery settings for fast charging options", "deeplink": "android.settings.BATTERY_SAVER_SETTINGS" },
+            { "instruction": "Charge with the screen off and heavy apps closed", "deeplink": "unresolved" },
+            { "instruction": "Restart the device and try a different power outlet", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Display",
+      "flows": [
+        {
+          "id": "screen_dim_flicker",
+          "problem": "Screen is too dim, flickers or changes brightness by itself",
+          "severity": "Medium",
+          "keywords": ["screen", "display", "brightness", "dim", "flicker", "flickering", "dark screen", "auto brightness"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open display settings and turn off adaptive brightness", "deeplink": "android.settings.DISPLAY_SETTINGS" },
+            { "instruction": "Turn off Power saving mode, which caps brightness", "deeplink": "android.settings.BATTERY_SAVER_SETTINGS" },
+            { "instruction": "Disable Blue light filter / Eye comfort shield", "deeplink": "android.settings.DISPLAY_SETTINGS" },
+            { "instruction": "Restart in Safe mode to rule out a third-party app", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "screen_rotation_stuck",
+          "problem": "Screen auto-rotation is not working or stuck in one orientation",
+          "severity": "Low",
+          "keywords": ["screen rotation", "auto rotate", "rotation lock", "landscape", "portrait", "orientation", "rotate not working", "screen stuck"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Swipe down the notification panel and make sure Auto-rotate is enabled", "deeplink": "unresolved" },
+            { "instruction": "Open display settings and check for rotation or orientation options", "deeplink": "android.settings.DISPLAY_SETTINGS" },
+            { "instruction": "Open accessibility settings and turn off any screen orientation lock", "deeplink": "android.settings.ACCESSIBILITY_SETTINGS" },
+            { "instruction": "Restart the device to reset the sensor", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Sound",
+      "flows": [
+        {
+          "id": "no_sound",
+          "problem": "No sound from speaker or during calls",
+          "severity": "High",
+          "keywords": ["sound", "audio", "no sound", "speaker", "volume", "muted", "can't hear", "quiet"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open sound settings and raise media, ringtone and call volume", "deeplink": "android.settings.SOUND_SETTINGS" },
+            { "instruction": "Turn off Do Not Disturb", "deeplink": "android.settings.SOUND_SETTINGS" },
+            { "instruction": "Disconnect any Bluetooth device still receiving the audio", "deeplink": "android.settings.BLUETOOTH_SETTINGS" },
+            { "instruction": "Clean the speaker grille and remove the case", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Notifications",
+      "flows": [
+        {
+          "id": "notifications_delayed",
+          "problem": "Notifications are delayed or never arrive",
+          "severity": "Medium",
+          "keywords": ["notification", "notifications", "alerts", "not getting messages", "delayed notification", "no popup"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open notification settings and allow notifications for the app", "deeplink": "android.settings.NOTIFICATION_SETTINGS" },
+            { "instruction": "Turn off Do Not Disturb", "deeplink": "android.settings.SOUND_SETTINGS" },
+            { "instruction": "Remove battery restrictions for the app so it can run in the background", "deeplink": "android.settings.BATTERY_SAVER_SETTINGS" },
+            { "instruction": "Allow background data usage for the app", "deeplink": "android.settings.DATA_USAGE_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Camera",
+      "flows": [
+        {
+          "id": "camera_blurry_or_fails",
+          "problem": "Camera is blurry, freezes or fails to open",
+          "severity": "Medium",
+          "keywords": ["camera", "blurry", "photo", "picture", "camera failed", "camera freezing", "focus"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Wipe the lens and remove any case covering it", "deeplink": "unresolved" },
+            { "instruction": "Force stop and clear the cache of the Camera app", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Confirm the Camera permission is granted to the app you are using", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Free up storage — the camera cannot save photos when full", "deeplink": "android.settings.INTERNAL_STORAGE_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Storage",
+      "flows": [
+        {
+          "id": "storage_full",
+          "problem": "Storage is full or the device warns about low space",
+          "severity": "Medium",
+          "keywords": ["storage", "space", "memory full", "not enough space", "storage full", "free up space"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open storage settings and review what is using space", "deeplink": "android.settings.INTERNAL_STORAGE_SETTINGS" },
+            { "instruction": "Clear cached data for the largest apps", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Delete or back up large videos and downloads", "deeplink": "unresolved" },
+            { "instruction": "Uninstall apps you no longer use", "deeplink": "android.settings.MANAGE_APPLICATIONS_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Apps",
+      "flows": [
+        {
+          "id": "app_crashes",
+          "problem": "An app keeps crashing, freezing or closing by itself",
+          "severity": "Medium",
+          "keywords": ["app crash", "crashing", "app closes", "freezing", "app not responding", "keeps stopping"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Force stop the app, then clear its cache", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Update the app from the store", "deeplink": "unresolved" },
+            { "instruction": "Check the app's permissions are granted", "deeplink": "android.settings.MANAGE_APPLICATIONS_SETTINGS" },
+            { "instruction": "Free storage space and restart the device", "deeplink": "android.settings.INTERNAL_STORAGE_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Location",
+      "flows": [
+        {
+          "id": "location_inaccurate",
+          "problem": "GPS or location is inaccurate or unavailable",
+          "severity": "Medium",
+          "keywords": ["gps", "location", "maps", "navigation", "wrong location", "location not working"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open location settings and turn Location on", "deeplink": "android.settings.LOCATION_SOURCE_SETTINGS" },
+            { "instruction": "Enable improved accuracy using Wi-Fi and Bluetooth scanning", "deeplink": "android.settings.LOCATION_SOURCE_SETTINGS" },
+            { "instruction": "Grant precise location permission to the app", "deeplink": "android.settings.APPLICATION_SETTINGS" },
+            { "instruction": "Turn Wi-Fi on — it greatly improves positioning indoors", "deeplink": "android.settings.WIFI_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Device Performance",
+      "flows": [
+        {
+          "id": "device_slow",
+          "problem": "Device is slow, laggy or overheating",
+          "severity": "Medium",
+          "keywords": ["slow", "lag", "laggy", "hangs", "overheating", "hot", "performance", "freezing phone"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Restart the device to clear background processes", "deeplink": "unresolved" },
+            { "instruction": "Free up storage space", "deeplink": "android.settings.INTERNAL_STORAGE_SETTINGS" },
+            { "instruction": "Review and restrict apps with high background battery use", "deeplink": "android.settings.BATTERY_SAVER_SETTINGS" },
+            { "instruction": "Uninstall unused apps", "deeplink": "android.settings.MANAGE_APPLICATIONS_SETTINGS" },
+            { "instruction": "Install the latest software update", "deeplink": "unresolved" }
+          ]
+        },
+        {
+          "id": "software_update_failed",
+          "problem": "Software update fails to download or install",
+          "severity": "Medium",
+          "keywords": ["software update", "system update", "update failed", "firmware", "update stuck", "update error", "ota", "over the air"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Connect to a stable Wi-Fi network before attempting the update", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Free up at least 2 GB of storage for the update", "deeplink": "android.settings.INTERNAL_STORAGE_SETTINGS" },
+            { "instruction": "Charge the device to at least 50% before retrying", "deeplink": "unresolved" },
+            { "instruction": "Check the device info page for manual update options", "deeplink": "android.settings.DEVICE_INFO_SETTINGS" },
+            { "instruction": "Restart the device and try the update again", "deeplink": "unresolved" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Accounts and Connections",
+      "flows": [
+        {
+          "id": "account_sync_failing",
+          "problem": "Account will not sign in or stops syncing",
+          "severity": "Medium",
+          "keywords": ["account", "sync", "samsung account", "google account", "sign in", "login failed", "not syncing"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Open account settings and check the account status", "deeplink": "android.settings.SYNC_SETTINGS" },
+            { "instruction": "Turn sync off and on again for the affected account", "deeplink": "android.settings.SYNC_SETTINGS" },
+            { "instruction": "Confirm the device has a working internet connection", "deeplink": "android.settings.WIFI_SETTINGS" },
+            { "instruction": "Check that the date and time are set automatically", "deeplink": "android.settings.DATE_SETTINGS" },
+            { "instruction": "Remove the account and add it again", "deeplink": "android.settings.ADD_ACCOUNT_SETTINGS" }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Biometrics and Security",
+      "flows": [
+        {
+          "id": "fingerprint_not_working",
+          "problem": "Fingerprint scanner does not recognize fingerprints or fails to unlock",
+          "severity": "Medium",
+          "keywords": ["fingerprint", "fingerprint scanner", "biometric", "biometrics", "fingerprint not working", "finger unlock", "touch id", "fingerprint sensor"],
+          "validated": true,
+          "steps": [
+            { "instruction": "Clean the fingerprint sensor and your finger — moisture or dirt reduces accuracy", "deeplink": "unresolved" },
+            { "instruction": "Open security settings and re-register your fingerprints", "deeplink": "android.settings.SECURITY_SETTINGS" },
+            { "instruction": "Register the same finger at different angles for better coverage", "deeplink": "android.settings.SECURITY_SETTINGS" },
+            { "instruction": "Remove any screen protector covering the in-display sensor", "deeplink": "unresolved" },
+            { "instruction": "Increase the touch sensitivity setting if you use a screen protector", "deeplink": "android.settings.DISPLAY_SETTINGS" }
+          ]
+        }
+      ]
+    }
+  ]
+}
