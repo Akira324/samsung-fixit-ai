@@ -54,22 +54,28 @@ function idf(token: string): number {
 function scoreFlow(tokens: string[], flow: KnowledgeFlow, category: string): number {
   if (tokens.length === 0) return 0;
 
+  const keywordTokens = new Set(flow.keywords.flatMap((k) => tokenize(k)));
+  const categoryTokens = new Set(tokenize(category));
+  const problemTokens = new Set(tokenize(flow.problem));
   const haystack = [
     ...flow.keywords.map((k) => k.toLowerCase()),
     flow.problem.toLowerCase(),
     category.toLowerCase(),
   ].join(" ");
-  const haystackTokens = new Set(tokenize(haystack));
 
   let score = 0;
 
-  // Token-level matching with IDF weight
+  // Token-level matching with field-weighted IDF
   for (const token of tokens) {
     const weight = idf(token);
-    if (haystackTokens.has(token)) {
-      score += weight;
+    if (keywordTokens.has(token)) {
+      score += weight * 1.5; // Direct match in curated technical keywords
+    } else if (categoryTokens.has(token)) {
+      score += weight * 1.2; // Match in category name
+    } else if (problemTokens.has(token)) {
+      score += weight * 0.8; // Match in descriptive problem sentence
     } else if (haystack.includes(token)) {
-      score += weight * 0.5;
+      score += weight * 0.3; // Partial substring match
     }
   }
 

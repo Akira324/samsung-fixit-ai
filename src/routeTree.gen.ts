@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiTroubleshootRouteImport } from './routes/api/troubleshoot'
+import { Route as V1TroubleshootRouteImport } from './routes/v1/troubleshoot'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,45 @@ const ApiTroubleshootRoute = ApiTroubleshootRouteImport.update({
   path: '/api/troubleshoot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const V1TroubleshootRoute = V1TroubleshootRouteImport.update({
+  id: '/v1/troubleshoot',
+  path: '/v1/troubleshoot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/health': typeof ApiHealthRoute
   '/api/troubleshoot': typeof ApiTroubleshootRoute
+  '/v1/troubleshoot': typeof V1TroubleshootRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/health': typeof ApiHealthRoute
   '/api/troubleshoot': typeof ApiTroubleshootRoute
+  '/v1/troubleshoot': typeof V1TroubleshootRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/health': typeof ApiHealthRoute
   '/api/troubleshoot': typeof ApiTroubleshootRoute
+  '/v1/troubleshoot': typeof V1TroubleshootRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/health' | '/api/troubleshoot'
+  fullPaths: '/' | '/api/health' | '/api/troubleshoot' | '/v1/troubleshoot'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/health' | '/api/troubleshoot'
-  id: '__root__' | '/' | '/api/health' | '/api/troubleshoot'
+  to: '/' | '/api/health' | '/api/troubleshoot' | '/v1/troubleshoot'
+  id:
+    '__root__' | '/' | '/api/health' | '/api/troubleshoot' | '/v1/troubleshoot'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiTroubleshootRoute: typeof ApiTroubleshootRoute
+  V1TroubleshootRoute: typeof V1TroubleshootRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +93,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTroubleshootRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/v1/troubleshoot': {
+      id: '/v1/troubleshoot'
+      path: '/v1/troubleshoot'
+      fullPath: '/v1/troubleshoot'
+      preLoaderRoute: typeof V1TroubleshootRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +107,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiTroubleshootRoute: ApiTroubleshootRoute,
+  V1TroubleshootRoute: V1TroubleshootRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

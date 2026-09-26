@@ -60,6 +60,7 @@ const SYNONYMS: Record<string, string> = {
   overheating: "overheat",
   pairing: "pair",
   paired: "pair",
+  connects: "connect",
   connecting: "connect",
   connected: "connect",
   syncing: "sync",
@@ -74,6 +75,10 @@ const STOPWORDS = new Set([
   "keep", "every", "few", "very", "really", "too", "with", "when", "phone",
   "device", "samsung", "galaxy", "please", "help", "having", "issue", "issues",
   "problem", "problems", "cant", "cannot", "wont", "doesnt", "dont", "not",
+  // Common temporal, conjunction, preposition, and conversational function words
+  "after", "before", "during", "while", "then", "since", "until",
+  "from", "into", "about", "by", "as", "at", "but", "or", "so", "if",
+  "got", "get", "gets", "getting", "just", "still", "also", "again",
 ]);
 
 /**

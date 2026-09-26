@@ -97,8 +97,10 @@ export async function troubleshoot(rawComplaint: unknown): Promise<TroubleshootR
   // ---- RETRIEVAL -----------------------------------------------------------
   const retrievalStart = performance.now();
   const searchText = enriched ? `${complaint} ${enriched.problem} ${enriched.keywords.join(" ")}` : complaint;
-  const match = bestFlow(searchText);
-  const context = retrieveFlows(searchText, 3).map((m) => ({
+  const categoryBoost =
+    enriched?.category && enriched.category !== "Unknown" ? enriched.category : undefined;
+  const match = bestFlow(searchText, 1, categoryBoost);
+  const context = retrieveFlows(searchText, 3, categoryBoost).map((m) => ({
     category: m.category,
     problem: m.flow.problem,
     steps: m.flow.steps,
