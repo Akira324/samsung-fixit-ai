@@ -69,7 +69,7 @@ export class Theme2PipelineService {
     }
 
     // 3. Grounded Action Extraction
-    const actions = stepExtractor.extractActions(siisTitle, siisContent);
+    const actions = stepExtractor.extractActions(siisTitle, siisContent, query);
 
     // 4. Verify all emitted deeplinks exist verbatim in the official catalog
     for (const action of actions) {

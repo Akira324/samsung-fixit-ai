@@ -20,12 +20,18 @@ export class StepExtractor {
    * Deterministically parses SIIS article text into structured Action objects.
    * Ensures 100% grounded content: only derives steps and instructions present in the text.
    */
-  public extractActions(title: string, content: string): Action[] {
+  public extractActions(title: string, content: string, query?: string): Action[] {
     const rawSections = this.splitIntoSections(content);
     const actions: Action[] = [];
 
     for (const section of rawSections) {
       const trimmedTitle = section.header.trim();
+
+      // In composite multi-topic documents, ignore sub-sections that are unrelated to the query
+      if (query && trimmedTitle && !this.isSectionRelevant(trimmedTitle, section.body, query, title)) {
+        continue;
+      }
+
       const textLines = section.body
         .split("\n")
         .map((l) => l.trim())
@@ -195,6 +201,51 @@ export class StepExtractor {
     }
     return null;
   }
+
+  private isSectionRelevant(
+    header: string,
+    body: string,
+    query: string,
+    docTitle: string
+  ): boolean {
+    // Numbered steps (e.g. "Step 1", "1.") are part of sequential procedures
+    if (/^(step\s+\d+|\d+\.)/i.test(header)) {
+      return true;
+    }
+
+    const lowerDocTitle = docTitle.toLowerCase();
+    // Only composite documents with generic overview titles require sub-section filtering
+    const isCompositeDoc =
+      lowerDocTitle.includes("some things to check") ||
+      lowerDocTitle.includes("first");
+
+    if (!isCompositeDoc) {
+      return true;
+    }
+
+    const lowerHeader = header.toLowerCase();
+    const lowerQuery = query.toLowerCase();
+
+    const genericHeaderWords = new Set([
+      "screen", "display", "phone", "tablet", "device", "nexa", "techcorp", "fold",
+      "issue", "issues", "problem", "problems", "process", "reason", "reasons",
+      "lock", "check", "first", "step", "steps", "thing", "things", "about", "your"
+    ]);
+
+    const headerKeywords = lowerHeader
+      .replace(/[^\w\s]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length >= 3 && !genericHeaderWords.has(w));
+
+    if (headerKeywords.length === 0) {
+      return true;
+    }
+
+    // A secondary section in a composite guide is only included if its specific topic is in the query
+    return headerKeywords.some((kw) => lowerQuery.includes(kw));
+  }
+
 }
+
 
 export const stepExtractor = new StepExtractor();

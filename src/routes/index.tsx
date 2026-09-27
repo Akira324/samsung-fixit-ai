@@ -6,7 +6,7 @@ import { ExampleProblems } from "@/components/troubleshooter/ExampleProblems";
 import { LoadingState } from "@/components/troubleshooter/LoadingState";
 import { ErrorMessage } from "@/components/troubleshooter/ErrorMessage";
 import { ResultsPanel } from "@/components/troubleshooter/ResultsPanel";
-import { requestTroubleshooting, type TroubleshootResponse } from "@/services/troubleshootApi";
+import { requestTroubleshooting, type UnifiedTroubleshootResult } from "@/services/troubleshootApi";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const [complaint, setComplaint] = useState("");
-  const [result, setResult] = useState<TroubleshootResponse | null>(null);
+  const [result, setResult] = useState<UnifiedTroubleshootResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
