@@ -6,6 +6,34 @@ Samsung FixIt AI pairs natural language customer complaints with internal TechCo
 
 ---
 
+## Demo Video
+
+The complete product demonstration video is available here:
+
+[Watch the Samsung Fixit AI Demo Video](https://drive.google.com/drive/folders/16d2uvFt4UwxQzS863Dq47zodSQgyFspO)
+
+The video demonstrates:
+- Samsung PRISM Theme 2 troubleshooting flow
+- SIIS-grounded troubleshooting
+- Official deeplink catalog integration
+- Standard troubleshooting flow
+- Theme 2 relevance gating
+- Automated validation and testing
+- Mobile demonstration
+
+---
+
+## Submission
+
+- **Project:** Samsung Fixit AI
+- **Theme:** Smart Guided Troubleshooting Engine
+- **Team:** Clickbait
+- **College:** SRM University KTR
+- **Demo Video:** [Watch Demo Video](https://drive.google.com/drive/folders/16d2uvFt4UwxQzS863Dq47zodSQgyFspO)
+- **Release Tag:** `PRISM_GENAI_HACKATHON_Y2026`
+
+---
+
 ## 1. Problem Statement
 
 * **Diagnostic Friction**: Modern mobile operating systems feature hundreds of deeply nested settings and configuration screens. When encountering technical faults, users struggle to diagnose the root issue and locate the precise settings page.
